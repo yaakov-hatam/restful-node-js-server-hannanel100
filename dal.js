@@ -2,7 +2,10 @@ const fs = require('fs');
 const fileName = `./phones/phones.json`;
 
 function readOne(id, callback) {
-
+    fs.readFile(`./phones/${id}`, (e, d) =>{
+        const phone = JSON.parse(d.toString());
+        console.log(phone);
+    })
 }
 
 function readAll(callback) {

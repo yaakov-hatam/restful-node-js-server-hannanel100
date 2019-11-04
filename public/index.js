@@ -46,30 +46,18 @@ function phoneTableView(phones) {
   const phonesArray = [...phoneList];
   console.log(phonesArray)
   phonesArray.forEach(phone => phone.addEventListener("click", function(e) {
-    
-      console.log(e.target.parentNode.id);
+      getMoreInfo(e.target.parentNode.id);
+      
     }
   ))
 }
 
-const phoneList = document.getElementsByClassName("phone");
-const phones = document.getElementById("phones");
-phones.addEventListener("click", function(e) {
-  if (e.target && e.target.classList.contains("phone")) {
-    console.log("clicked");
-  }
-});
-// for (const phone of phoneList) {
-//     console.log(phone)
-//     // button.addEventListener('click', function(event) {
-//     //   ...
-//     // })
-//   }
-// // console.log(phoneList);
-// // for(let i = 0; i < phoneList.length; i++){
-// //     console.log(phoneList[i]);
-// // }
 
-const getMoreInfo = () => {
-  console.log("clicked");
+
+const getMoreInfo = (id) => {
+    fetch(`phone/${id}`).then(phoneData => {
+        console.log(phoneData);
+        phoneData.json().then(console.log(id))
+    })
+  
 };

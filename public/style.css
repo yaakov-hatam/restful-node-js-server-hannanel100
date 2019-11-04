@@ -1,0 +1,6 @@
+table, tr, td{
+    border: 1px black solid;
+}
+.phone:hover{
+    cursor: pointer;
+}

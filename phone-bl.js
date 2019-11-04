@@ -1,13 +1,17 @@
 const dal = require('./dal');
 
-// function getRunner(id, callback) {
-//     callback(null, { "id": id, "name": "abc", "km": 42 });
-//     /*
-//     dal.getRunner(id, function (runnerData) {
-
-//     })
-//     */
-// }
+function getPhone(id, callback) {
+    
+    
+    dal.readOne(id,  (e, phoneData) => {
+        if (e) {
+            callback(e);
+        } else {
+            callback(null, allPhones);
+        }
+    })
+    
+}
 
 function getPhones(callback) {
     dal.readAll((e, allPhones) => {
@@ -69,7 +73,7 @@ function filterPhoneList(selectedFiltersValues, callback) {
 module.exports.updateRunner = function () {
 
 }
-// module.exports.getRunner = getRunner;
+module.exports.getPhone = getPhone;
 module.exports.getPhones = getPhones;
 module.exports.createPhone = createPhone;
 module.exports.filterPhoneList = filterPhoneList;

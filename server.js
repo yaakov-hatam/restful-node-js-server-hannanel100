@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = 3201;
 const phoneBl = require('./phone-bl')
-// const something = require('./phones/phoness.js')
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -21,15 +21,16 @@ app.get('/phone', (req, res) => {
 });
 
 
-// app.get('/runner/:id', (req, res) => {
-//     runnerBl.getRunner(req.param.id, function (e, data) {
-//         if (e) {
-//             return res.status(500).send();
-//         } else {
-//             return res.send(data);
-//         }
-//     })
-// });
+app.get('/phone/:id', (req, res) => {
+    console.log(req.param.id)
+    phoneBl.getPhone(req.param.id, function (e, data) {
+        if (e) {
+            return res.status(500).send();
+        } else {
+            return res.send(data);
+        }
+    })
+});
 
 // app.post('/runner', (req, res) => {
 //     // runnerBl.createRunner(req.body, function (e, data) {
