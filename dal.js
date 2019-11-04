@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fileName = 'c:\\Users\\Jbt\\Documents\\GitHub\\hannanel\\restful-node-js-server-hannanel100\\phones\\phones.json';
+const fileName = `./phones/phones.json`;
 
 function readOne(id, callback) {
 
