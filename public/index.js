@@ -55,6 +55,7 @@ function phoneTableView(phones) {
 
 
 const getMoreInfo = (id) => {
+  console.log(id);
     fetch(`phone/${id}`).then(phoneData => {
         console.log(phoneData);
         phoneData.json().then(console.log(id))

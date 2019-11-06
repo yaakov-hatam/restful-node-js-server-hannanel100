@@ -2,15 +2,22 @@ const fs = require('fs');
 const fileName = `./phones/phones.json`;
 
 function readOne(id, callback) {
-    fs.readFile(`./phones/${id}`, (e, d) =>{
-        const phone = JSON.parse(d.toString());
+    fs.readFile(`./phones/${id}.json`, (e, d) =>{
+        console.log(d);
+        const phone = d && d.length > 0 ? JSON.parse(d.toString()) : [];
         console.log(phone);
     })
+    if (e){
+        callback(e);
+    }
+    else{
+        callback(e, phone);
+    }
 }
 
 function readAll(callback) {
     fs.readFile(fileName, (e, d) => {
-        console.log(d);
+        
         const allPhones = d && d.length > 0 ? JSON.parse(d.toString()) : [];
         allPhones.sort(function (a, b) {
             return a.id - b.id;
@@ -59,6 +66,7 @@ function deleteOne(runnerToDelete, callback) {
     });
 }
 
+module.exports.readOne = readOne;
 module.exports.readAll = readAll;
 module.exports.saveOne = saveOne;
 module.exports.deleteOne = deleteOne;
